@@ -8,10 +8,30 @@ import ListMovie from '../pages/listMovie';
 import Home from '../pages/Home';
 import Details from '../pages/detailMovie';
 
+import Login from '../pages/login';
+import Register from '../pages/Register';
+
 import Colors from '../constant/Colors';
+import Splash from '../pages/splash';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const LoginStack = createStackNavigator();
+
+const loginPage = () => (
+  <LoginStack.Navigator>
+    <LoginStack.Screen
+      name="Login"
+      component={Login}
+      options={{headerShown: false}}
+    />
+    <LoginStack.Screen
+      name="Register"
+      component={Register}
+      options={{headerShown: false}}
+    />
+  </LoginStack.Navigator>
+);
 
 const bottomTab = () => (
   <Tab.Navigator
@@ -45,9 +65,20 @@ const bottomTab = () => (
 
 const Route = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
-        name="tab"
+        name="Splash"
+        component={Splash}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="LoginPage"
+        component={loginPage}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name="Home"
         component={bottomTab}
         options={{headerShown: false}}
       />

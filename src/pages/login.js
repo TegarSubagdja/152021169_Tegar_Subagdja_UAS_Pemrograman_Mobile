@@ -13,7 +13,7 @@ import Colors from '../constant/Colors';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
 
-const App = () => {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,7 +23,7 @@ const App = () => {
         const user = userCredential.user;
         console.log('User signed in:', user);
         // Add navigation logic or other actions here upon successful login
-        // navigation.navigate('Home');
+        navigation.navigate('Home');
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -180,4 +180,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Login;
